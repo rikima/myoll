@@ -65,14 +65,14 @@ public class TrainDriver {
             }
         }
         try {
-            model_json = String.format("%s.%s.model.json", alg, input);
+            model_json = String.format("%s.%s.model.json", input, alg);
 
             trainData = loadTrainData(new File(input));
             Model m = run(trainData, alg, c, bias, tryCount);
             String json = m.toJson();
             IoUtil.outputAsText(model_json, json);
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
             printUsage();
         }
     }
