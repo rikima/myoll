@@ -38,21 +38,22 @@ public class Evaluator {
                 }
             } else {
                 if (ey > 0) {
-                    np++;
-                } else {
                     pn++;
+                } else {
+                    np++;
                 }
             }
         }
 
+        System.out.println("###");
         System.out.println(String.format("PP: %d PN: %d NP: %d NN: %d", this.pp, this.pn, this.np, this.nn));
-        double acc = (pp) / (double)(pp + np);
-        System.out.println(String.format("acc: %f", acc));
+        double recall = (pp) / (double)(pp + pn);
+        System.out.println(String.format("recall: %f", recall));
 
-        double prec = (pp) / (double)(pp + pn);
+        double prec = (pp) / (double)(pp + np);
         System.out.println(String.format("prec: %f", prec));
 
-        double f1 = 2.0 * acc * prec / (acc + prec);
+        double f1 = 2.0 * recall * prec / (recall + prec);
         System.out.println(String.format("F1: %f", f1));
     }
 }

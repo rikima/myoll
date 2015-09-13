@@ -86,6 +86,7 @@ abstract public class OLLTrainer {
         }
         
         System.out.println("---");
+        System.out.println("# closed test");
         System.out.println("pp pn np nn :" + pp + " " + pn + " " + np + " " + nn);
         
         this.wv.slim();

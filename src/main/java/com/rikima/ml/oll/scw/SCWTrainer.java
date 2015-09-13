@@ -52,29 +52,30 @@ public class SCWTrainer extends OLLTrainer {
         double var    = getVariance(fv);
         
         double alpha = getAlpha(margin, var);
-        if (alpha> 0){
-            double beta  = getBeta(var, alpha);
+        if (alpha> 0) {
+            double beta = getBeta(var, alpha);
             this.update(fv, alpha, beta);
-            
+
             status.alpha = alpha;
             status.beta = beta;
             status.margin = margin;
             status.var = var;
-            
-            System.out.println(status);
+            if (debug) {
+                System.out.println(status);
+            }
         }
         this.exampleN++;
     }
     
     // private methods --------
     private double getAlpha(double margin, double cov) {
-    	switch (this.type) { 
-        case Type1:
-            return this.getAlpha1(margin, cov);
-        case Type2:
-            return this.getAlpha2(margin, cov);
-        default:
-            return Double.NaN;
+        switch (this.type) {
+            case Type1:
+                return this.getAlpha1(margin, cov);
+            case Type2:
+                return this.getAlpha2(margin, cov);
+            default:
+                return Double.NaN;
         }
     }
     
